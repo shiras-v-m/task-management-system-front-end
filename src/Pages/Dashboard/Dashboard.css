@@ -1,0 +1,155 @@
+/* header */
+.topHeader{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(42, 42, 42);
+    align-items: center;
+}
+
+.menuBtn{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: orange;
+    cursor: pointer;
+}
+.menuBtnAndTitle{
+    display: flex;
+    align-items: center;
+}
+.title{
+    padding-left: 15px;
+    font-size: 23px;
+    color: white;
+    font-weight: 700;
+}
+.userBtn{
+    display:flex;
+    gap: 5px;
+    align-items:center;
+    background-color:orange;
+    padding:10px;
+    padding-bottom: 14px;
+    height:100%;
+}
+/* header */
+.dashboardBody{
+    background-color: white;
+    height: 100vh;
+}
+.dashboardTxt{
+    padding: 10px 2rem;
+    font-size: 21px;
+    box-shadow: 0 0 3px black;
+}
+.tasks{
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+.task{
+    padding: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 100px;
+    border-radius: 4px;
+    color: white;
+}
+.task:hover{
+    background-color: rgba(53, 53, 53, 0.517);
+}
+.allTasks{
+    background-color: rgb(80, 80, 249);
+}
+.allTaskTxt,.completedTaskTxt,.inProgressTaskTxt{
+font-size: 18px;
+}
+.taskCountTxt{
+    padding-top: 4px;
+font-size: 19px;
+font-weight: 600;
+
+}
+
+
+.completedTasks{
+    background-color: rgb(0, 144, 0);
+}
+.inProgressTasks{
+    background-color: rgb(245, 110, 0);
+}
+
+.createTask{
+    padding-top:50px ;
+    display: flex;
+    justify-content: center;
+}
+
+
+.createTaskBtn{
+
+  
+    margin-top: 1rem;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    width: 200px;
+    padding: 10px;
+    background:orange;
+    color: white;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.502);
+    font-weight: 700;
+    box-shadow: 0 0 4px black;
+}
+
+.createTaskBtn:hover{
+    transition: 0.2s;
+    background:rgb(152, 99, 0);
+}
+
+.viewTaskBtn{
+    margin-left: 20px;
+    transition: 0.2s ease;
+    margin-top: 1rem;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    width: 200px;
+    padding: 10px;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.444);
+    color: white;
+    background:rgb(253, 166, 4);
+    font-weight: 700;
+    box-shadow: 0 0 6px black;
+}
+
+.viewTaskBtn:hover{
+    background:rgb(141, 92, 1);
+    
+}
+@media(max-width:650px){
+    .tasks{
+        padding-top: 2rem;
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .createTask{
+            display: flex;
+            flex-direction: column;
+           align-items: center;
+        }
+        .viewTaskBtn{
+            margin-left: -3px;
+        }
+        
+    
+}

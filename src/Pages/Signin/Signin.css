@@ -1,0 +1,121 @@
+.loginFrame{
+    
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: ghostwhite;
+}
+.welcomeTxt{
+    color: black;
+    font-size: 25px;
+    margin: 0;
+}
+.logoIcon{
+    background: black;
+    width: 100px;
+    border-radius: 10px;
+}
+.loginContainer{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 380px;
+    background-color: white;
+    padding: 3rem 3.5rem;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(88, 88, 88, 0.617);
+}
+.emailContainer{
+    padding-top: 1rem;
+    width: 100%;
+}
+.passwordContainer{
+    width: 100%;
+}
+.emailInput{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-bottom: 5px;
+}
+.emailInput:focus + .bottomLine{
+    background:linear-gradient(to right,rgb(0, 238, 255),rgb(154, 25, 180));
+    animation: bottomLineAnimation  1.2s ease both;
+}
+
+
+.bottomLine{
+    transition: 1s ease;
+    height: 0.8px;
+    width: 100%;
+    background:black;
+}
+
+
+.loginBtn{
+
+  
+    margin-top: 1rem;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 10px;
+    background:linear-gradient(to right,rgb(0, 238, 255),rgb(154, 25, 180));
+    
+}
+
+.loginBtn:hover{
+    background:linear-gradient(to left,rgb(0, 238, 255),rgb(154, 25, 180));
+}
+.signUpTxt{
+    font-size: 13px;
+    color: rgb(80, 80, 80);
+}
+.signUpLink{
+    padding-left: 3px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.hook{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -40px;
+    width: 40px;
+    height: 40px;
+    border-top-left-radius:50% ;
+    border-top-right-radius: 50%;
+    box-shadow: 0  -3px 6px black;
+    background-color: white;
+    
+}
+.nail{
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    border-radius: 50%;
+    box-shadow: 0  0px 3px black;
+}
+
+@keyframes bottomLineAnimation{
+    
+    0%{
+        width: 0%;
+        height: 3px;
+    
+    }
+    
+    100%{
+        width: 100%;
+        height: 3px;
+    }
+}
