@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './Dashboard.css'
 import { useState } from 'react';
 
@@ -8,8 +8,12 @@ import { BASE_URL } from '../../Services/baseUrl';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../Components/Header/Header';
+import { AppContext } from '../../AppContext';
 
 function Dashboard() {
+
+  // const {data}=useContext(AppContext)
+
   const [tasksData,setTaskData]=useState('')
   const [email,setEmail]=useState('')
   const [completed,setCompleted]=useState(0)
@@ -104,7 +108,7 @@ function Dashboard() {
             </span>
             <h3 className='taskCountTxt'>{`${completed ? completed : 'Loading'}` }</h3></div>
 
-            <div className="completedTasks task"><h2 className='completedTaskTxt'>Created Task</h2>
+            <div className="completedTasks task createTaskTxt"><h2 className='completedTaskTxt '>Created Task</h2>
             <span className="material-symbols-outlined documentIcon">
               file_copy
             </span>
@@ -121,6 +125,7 @@ function Dashboard() {
         <div className="createTask">
           <button onClick={handleCreateTask} className='createTaskBtn'>Create Task</button>
           <button onClick={handleViewTask} className='viewTaskBtn'>View Tasks</button>
+
         </div>
       </div>
 

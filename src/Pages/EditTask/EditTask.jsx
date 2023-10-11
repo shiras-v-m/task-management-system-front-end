@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './EditTask.css'
 import Header from '../../Components/Header/Header'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { BASE_URL } from '../../Services/baseUrl'
+import { AppContext } from '../../AppContext'
 function EditTask() {
+  const {data}=useContext(AppContext)
+
   const [tIndex,setTIndex]=useState('')
   const [tTaskDetails,setTTaskDetails]=useState('')
   const [tAssignedDate,setTAssignedDate]=useState('')
@@ -17,7 +20,9 @@ function EditTask() {
   
      useEffect(()=>{
       const id=localStorage.getItem("id")
-      const tname=localStorage.getItem("tname")
+      // const tname=localStorage.getItem("tname")
+      const tname=data.state
+      
       axios.post(`${BASE_URL}/user/getEditTask`,{tname,id}).then((res)=>{
         console.log(res);
         console.log("status =",res.status);
@@ -47,7 +52,7 @@ function EditTask() {
   function handleSubmit(e){
     // let obj={taskname,description,deadline,assignedProject,tAssignedDate:"2023-07-12",id,tIndex}
     e.preventDefault()
-    alert('submitted')
+
     const id=localStorage.getItem("id")
     let obj={taskname:taskname,description:description,deadline:deadline,assignedProject:assignedProject,assignedDate:tAssignedDate,id:id,index:tIndex}
     axios.post(`${BASE_URL}/user/setEditTask`,obj).then((res)=>{

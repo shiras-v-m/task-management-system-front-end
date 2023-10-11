@@ -4,3 +4,8 @@
     color: orange;
     text-align: center;
 }
+.sortDropdown{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

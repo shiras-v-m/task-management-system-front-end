@@ -12,10 +12,14 @@ import Dashboard from './Pages/Dashboard/Dashboard'
 import TaskManager from './Pages/TaskManager/TaskManager';
 import ViewAllTask from './Pages/ViewAllTasks/ViewAllTask';
 import EditTask from './Pages/EditTask/EditTask';
+import Footer from './Components/Footer/Footer';
+import {AppContext} from './AppContext.js'
 
 function App() {
+  const [state,setState]=useState({})
   return (
    <>
+   <AppContext.Provider value={{data:{state,setState}}}>
     {/* <Header /> */}
     <Routes>
       {/* <Route path='/' element={<Home/>} /> */}
@@ -26,9 +30,9 @@ function App() {
       <Route path='/taskmanager' element={<TaskManager/>} />
       <Route path='/viewAllTasks' element={<ViewAllTask/>} />
       <Route path='/editTask' element={<EditTask/>} />
-  
-
     </Routes>
+    <Footer />
+    </AppContext.Provider>
    </>
   )
 }

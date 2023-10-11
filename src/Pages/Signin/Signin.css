@@ -1,3 +1,16 @@
+.titleTxt{
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    background-color: rgb(29, 29, 29);
+    font-size: 20px;
+    padding:10px
+}
+
+.backgroundImage{
+    width: 100%;
+    opacity: 0.5;
+}
 .loginFrame{
     
     width: 100%;

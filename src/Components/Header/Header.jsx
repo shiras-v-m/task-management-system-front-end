@@ -13,7 +13,8 @@ function Header() {
     handleClose()
   }
   const handleNotification=()=>{
-    handleClose()
+    // handleClose()
+    alert("Notification feature will be added soon")
     // navigate('')
   }
   // const [tasksData,setTaskData]=useState('')
@@ -45,6 +46,13 @@ function Header() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleCreateTask= ()=>{
+    navigate('/taskmanager')
+  }
+  const handleViewTask=()=>{
+    navigate('/viewAllTasks')
+  }
   return (
 
   
@@ -81,7 +89,7 @@ function Header() {
       
       <Offcanvas style={{ background: "black", color: "white" }} show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Welcome!</Offcanvas.Title>
+          <Offcanvas.Title><i class="fa-sharp fa-solid fa-people-roof fa-flip" style={{color:"#ff8000",paddingRight:'10px'}}></i>Welcome!</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <div className="loginDetail">
@@ -99,6 +107,12 @@ dashboard
             <button onClick={handleNotification} className='optionsBtn'><span class="material-symbols-outlined optionIcon">
 notifications
 </span>Notifications</button>
+<button onClick={handleCreateTask} className='optionsBtn'><span class="material-symbols-outlined optionIcon">
+add_circle
+</span>Create Task</button>
+<button onClick={handleViewTask} className='optionsBtn'><span class="material-symbols-outlined optionIcon">
+visibility
+</span>View All Task</button>
           </div>
         </Offcanvas.Body>
       </Offcanvas>

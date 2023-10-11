@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './TaskManager.css'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Header from '../../Components/Header/Header'
 import { BASE_URL } from '../../Services/baseUrl'
+import { AppContext } from '../../AppContext'
 function TaskManager() {
+  const {data}=useContext(AppContext)
+
+
   const navigate =useNavigate()
     const [taskname,setTaskname]=useState('')
     const [description,setDescription]=useState('')
@@ -14,7 +18,7 @@ function TaskManager() {
 
   function handleSubmit(e){
     e.preventDefault()
-    alert('submitted')
+
     const id=localStorage.getItem("id")
     axios.post(`${BASE_URL}/user/addtask`,{taskname,description,deadline,assignedProject,id}).then((res)=>{
       console.log(res);

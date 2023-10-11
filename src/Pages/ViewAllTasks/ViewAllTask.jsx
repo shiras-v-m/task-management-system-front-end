@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './ViewAllTask.css'
 import Header from '../../Components/Header/Header'
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../Services/baseUrl';
-function ViewAllTask() {
 
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import { AppContext } from '../../AppContext';
+function ViewAllTask() {
+  const {data}=useContext(AppContext)
    
 
     const navigate=useNavigate()
@@ -58,7 +62,8 @@ function ViewAllTask() {
 
     const handleEdit= (item)=>{
         console.log(item);
-        localStorage.setItem("tname",item.taskname)
+        // localStorage.setItem("tname",item.taskname)
+        data.setState(item.taskname)
         navigate('/editTask')
     }
 
@@ -79,7 +84,19 @@ function ViewAllTask() {
 
             <Header />
             <h1 className='AllTasksTxt'>All Tasks</h1>
-            
+            {/* <div className="sortDropdown"> <Dropdown data-bs-theme="dark">
+        <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+          sort
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <Dropdown.Item  >
+            Deadline based
+          </Dropdown.Item>
+          <Dropdown.Item >Assigned based</Dropdown.Item>
+        
+        </Dropdown.Menu>
+      </Dropdown></div> */}
             {
              
 

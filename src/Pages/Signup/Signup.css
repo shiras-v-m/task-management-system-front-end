@@ -1,3 +1,13 @@
+.titleTxt{
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    background-color: rgb(29, 29, 29);
+    font-size: 20px;
+    padding:15px 10px ;
+    text-shadow: 0 0 2px rgb(228, 228, 228);
+    outline: 1px solid red;
+}
 .registerFrame{
    
     width: 100%;

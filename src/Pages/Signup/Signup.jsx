@@ -4,6 +4,7 @@ import logo from '../../assets/logo.svg'
 import { Link , useNavigate} from 'react-router-dom'
 
 import axios from 'axios'
+import { BASE_URL } from '../../Services/baseUrl'
 function Signup() {
   const navigate =useNavigate()
     const [email,setEmail]=useState('')
@@ -20,6 +21,10 @@ function Signup() {
         // success message here
         navigate('/signin')
       }
+      else{
+        alert("Signup Failed try again")
+      }
+     
     }).catch(err=>{
       console.log(err);
          // failed message here
@@ -28,6 +33,7 @@ function Signup() {
   console.log(email,password,confirmPassword,mobile);
   return (
   <form onSubmit={handleSubmit}>
+          <h3 className='titleTxt'><i class="fa-sharp fa-solid fa-people-roof fa-flip" style={{color:"#ff8000",paddingRight:'10px'}}></i>Task Management System</h3>
     <div className="registerFrame">
       <div className='registerContainer'>
         <div className="hook">

@@ -91,8 +91,9 @@ font-weight: 600;
     display: flex;
     justify-content: center;
 }
-
-
+.createTaskTxt{
+    background-color: rgb(233, 165, 176);
+}
 .createTaskBtn{
 
   
@@ -128,6 +129,7 @@ font-weight: 600;
     background:rgb(253, 166, 4);
     font-weight: 700;
     box-shadow: 0 0 6px black;
+    
 }
 
 .viewTaskBtn:hover{
@@ -149,7 +151,8 @@ font-weight: 600;
         }
         .viewTaskBtn{
             margin-left: -3px;
+            margin-bottom: 3rem;
         }
-        
+       
     
 }
