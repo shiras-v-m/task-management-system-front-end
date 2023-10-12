@@ -24,8 +24,8 @@ function EditTask() {
       const tname=data.state
       
       axios.post(`${BASE_URL}/user/getEditTask`,{tname,id}).then((res)=>{
-        console.log(res);
-        console.log("status =",res.status);
+        // console.log(res);
+        // console.log("status =",res.status);
         if(res.status==200){
           // success message here
           // navigate('/viewalltasks')
@@ -42,7 +42,7 @@ function EditTask() {
           setAssignedProject(taskDetails.assignedProject)
         }
       }).catch(err=>{
-        console.log(err);
+        // console.log(err);
            // failed message here
       })
     },[])
@@ -56,14 +56,14 @@ function EditTask() {
     const id=localStorage.getItem("id")
     let obj={taskname:taskname,description:description,deadline:deadline,assignedProject:assignedProject,assignedDate:tAssignedDate,id:id,index:tIndex}
     axios.post(`${BASE_URL}/user/setEditTask`,obj).then((res)=>{
-      console.log(res);
-      console.log("status =",res.status);
+      // console.log(res);
+      // console.log("status =",res.status);
       if(res.status==200){
         // success message here
         navigate('/viewalltasks')
       }
     }).catch(err=>{
-      console.log(err);
+      // console.log(err);
          // failed message here
     })
   }

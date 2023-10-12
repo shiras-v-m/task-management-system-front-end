@@ -6,18 +6,20 @@ import image from '../../assets/bgImage.png'
 import { Link, useNavigate } from 'react-router-dom'
 
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
 
 import { BASE_URL } from '../../Services/baseUrl'
 import { AppContext } from '../../AppContext'
+import { notifyError, notifySuccess } from '../../Components/Toast/Toast'
+
 
 
 function Login() {
 
   // const {data}=useContext(AppContext)
 
-  const notify = (msg) => toast(msg);
+
 
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
@@ -26,35 +28,30 @@ function Login() {
     e.preventDefault()
 
     axios.post(`${BASE_URL}/user/login`, { email, password }).then((res) => {
-      console.log(res);
-      console.log("status =", res.status);
+      // console.log(res);
+      // console.log("status =", res.status);
       const { id, token } = res.data
       if (res.status == 200) {
         localStorage.setItem("id", id)
         localStorage.setItem("token", token)
         // success message here
-        notify("Logged in successfully")
+        notifySuccess("Logged in successfully")
         navigate('/dashboard')
-
       }
-      else if(res.status == 406){
-        alert("Login failed")
-      }
-      else if(res.status==401){
-        alert(res.data)
-      }
+      
     }).catch(err => {
-      console.log(err);
+      // console.log(err);
+      notifyError(err.response.data)
       // failed message here
     })
   }
-  console.log(email, password);
+  // console.log(email, password);
   return (
     <form onSubmit={handleSubmit}>
       {/* <h1>Task Management System</h1> */}
       
    
-      <h3 className='titleTxt'><i class="fa-sharp fa-solid fa-people-roof fa-flip" style={{color:"#ff8000",paddingRight:'10px'}}></i>Task Management System</h3>
+      <h3 className='titleTxt'><i className="fa-sharp fa-solid fa-people-roof fa-flip" style={{color:"#ff8000",paddingRight:'10px'}}></i>Task Management System</h3>
       <div className="loginFrame">
         <div className='loginContainer'>
           <div className="hook">

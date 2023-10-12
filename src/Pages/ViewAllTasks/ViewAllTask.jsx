@@ -9,6 +9,8 @@ import { BASE_URL } from '../../Services/baseUrl';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { AppContext } from '../../AppContext';
+import { ToastContainer } from 'react-toastify';
+import { notifyError, notifySuccess } from '../../Components/Toast/Toast';
 function ViewAllTask() {
   const {data}=useContext(AppContext)
    
@@ -23,15 +25,16 @@ function ViewAllTask() {
 
     const findData=()=>{
         const id=localStorage.getItem('id')
-        console.log(id);
+        // console.log(id);
         axios.post(`${BASE_URL}/user/gettask`,{id}).then((res)=>{
-          console.log(res);
+          // console.log(res);
           const {tasks}=res.data
           const {email}=res.data
           setTaskData(tasks)
           setEmail(email)
         }).catch(err=>{
-          console.log("error occured ",err);
+          // console.log("error occured ",err);
+          notifyError(err)
         })
     }
     useEffect(()=>{
@@ -41,27 +44,31 @@ function ViewAllTask() {
 
     const updateStatus=(status,index)=>{
         const id=localStorage.getItem('id')
-        console.log(id);
+        // console.log(id);
         axios.post(`${BASE_URL}/user/updateStatus`,{status,id,index}).then((res)=>{
-          console.log(res);
+          // console.log(res);
          if(res.status==200){
             findData()
          }
         }).catch(err=>{
-          console.log("error occured ",err);
+          // console.log("error occured ",err);
+          notifyError(err)
         })
     }
     const handleInprogress= (index)=>{
         updateStatus("Inprogress",index)
+        notifySuccess("Task status inprogress updated! ")
+        
     }
     const handleCompleted= (index)=>{
         updateStatus("Completed",index)
+        notifySuccess("Task status Completed updated! ")
     }
 
 
 
     const handleEdit= (item)=>{
-        console.log(item);
+        // console.log(item);
         // localStorage.setItem("tname",item.taskname)
         data.setState(item.taskname)
         navigate('/editTask')
@@ -69,15 +76,17 @@ function ViewAllTask() {
 
     const handleDelete= (index)=>{
         const id=localStorage.getItem('id')
-        console.log(id);
+        // console.log(id);
         axios.post(`${BASE_URL}/user/deleteTask`,{id,index}).then((res)=>{
-          console.log(res);
+          // console.log(res);
           if(res.status==200){
             findData()
           }
         }).catch(err=>{
-          console.log("error occured ",err);
+          // console.log("error occured ",err);
+          alert(res.response.data)
         })
+        notifySuccess("Task deleted successfully! ")
     }
     return (
         <>
@@ -148,6 +157,7 @@ function ViewAllTask() {
           <button onClick={handleCreateTask} className='createTaskBtn'>Create Task</button>
           
         </div>
+        <ToastContainer />
         </>
     )
 }

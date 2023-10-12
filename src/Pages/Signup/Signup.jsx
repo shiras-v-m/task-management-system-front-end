@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Signup.css'
 import logo from '../../assets/logo.svg'
 import { Link , useNavigate} from 'react-router-dom'
 
 import axios from 'axios'
 import { BASE_URL } from '../../Services/baseUrl'
+
+import  { notifyError, notifySuccess, notifyWarning } from '../../Components/Toast/Toast'
+import { ToastContainer } from 'react-toastify'
 function Signup() {
+
   const navigate =useNavigate()
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
@@ -13,27 +17,34 @@ function Signup() {
     const [mobile,setMobile]=useState('')
   function handleSubmit(e){
     e.preventDefault()
+    if(password!=confirmPassword){
+     return notifyWarning("Please enter a same password")
 
+    }
     axios.post(`${BASE_URL}/user/register`,{email,password,mobile}).then((res)=>{
-      console.log(res);
-      console.log("status =",res.status);
+      // console.log(res);
+      // console.log("status =",res.status);
       if(res.status==200){
         // success message here
         navigate('/signin')
+        return notifySuccess(res.data)
       }
-      else{
-        alert("Signup Failed try again")
-      }
+    
      
     }).catch(err=>{
-      console.log(err);
+      // console.log(err);
+      if(err.response.status==401){
+        notifyWarning(err.response.data)
+        return navigate('/signin')
+      }
+      notifyError(err.response.data)
          // failed message here
     })
   }
-  console.log(email,password,confirmPassword,mobile);
+  // console.log(email,password,confirmPassword,mobile);
   return (
   <form onSubmit={handleSubmit}>
-          <h3 className='titleTxt'><i class="fa-sharp fa-solid fa-people-roof fa-flip" style={{color:"#ff8000",paddingRight:'10px'}}></i>Task Management System</h3>
+          <h3 className='titleTxt'><i className="fa-sharp fa-solid fa-people-roof fa-flip" style={{color:"#ff8000",paddingRight:'10px'}}></i>Task Management System</h3>
     <div className="registerFrame">
       <div className='registerContainer'>
         <div className="hook">
@@ -66,6 +77,7 @@ function Signup() {
       </div>
      
     </div>
+    <ToastContainer />
   </form>
   )
 }

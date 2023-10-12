@@ -5,6 +5,8 @@ import axios from 'axios'
 import Header from '../../Components/Header/Header'
 import { BASE_URL } from '../../Services/baseUrl'
 import { AppContext } from '../../AppContext'
+import { notifyError } from '../../Components/Toast/Toast'
+import { ToastContainer } from 'react-toastify'
 function TaskManager() {
   const {data}=useContext(AppContext)
 
@@ -21,18 +23,19 @@ function TaskManager() {
 
     const id=localStorage.getItem("id")
     axios.post(`${BASE_URL}/user/addtask`,{taskname,description,deadline,assignedProject,id}).then((res)=>{
-      console.log(res);
-      console.log("status =",res.status);
+      // console.log(res);
+      // console.log("status =",res.status);
       if(res.status==200){
         // success message here
         navigate('/viewalltasks')
       }
     }).catch(err=>{
-      console.log(err);
+      // console.log(err);
          // failed message here
+         notifyError(err)
     })
   }
-  console.log(taskname,description,deadline,assignedProject);
+  // console.log(taskname,description,deadline,assignedProject);
   return (
     <>
       <Header />
@@ -69,6 +72,7 @@ function TaskManager() {
       </div>
     </form>
       </div>
+      <ToastContainer />
     </>
   )
 }

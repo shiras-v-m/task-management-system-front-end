@@ -66,9 +66,9 @@ function Dashboard() {
   useEffect(()=>{
     const id=localStorage.getItem('id')
    
-    console.log(id);
+    // console.log(id);
     axios.post(`${BASE_URL}/user/gettask`,{id}).then((res)=>{
-      console.log(res);
+      // console.log(res);
       const {tasks}=res.data
       const {email}=res.data
       setTaskData(tasks)
@@ -76,7 +76,7 @@ function Dashboard() {
       findCount(tasks)
  
     }).catch(err=>{
-      console.log("error occured ",err);
+      // console.log("error occured ",err);
     })
   },[])
 
